@@ -18,8 +18,8 @@ const setupAndStartServer = async () =>{
         console.log(`Server started at ${PORT}`);
         // console.log(process.env);
         //creating te city / testing as we are in main index
-        const repo = new CityRepository();
-        repo.createCity({name : "Lucknow"});
+        // const repo = new CityRepository();
+        // repo.createCity({name : "Lucknow"});
     })
 }
 
