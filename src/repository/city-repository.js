@@ -37,8 +37,7 @@ class CityRepository {
             const city = await City.update(data, {
                 where : {
                     id : cityId
-                },
-                returning : true
+                }
             });
             // const city = await City.findByPk(cityId)
             // city.name = data.name;
