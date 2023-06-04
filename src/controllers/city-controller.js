@@ -30,7 +30,7 @@ const destroy = async(req, res) => {
     try{
         const response = await cityService.deleteCity(req.params.id)
         return res.status(200).json({
-            data : city,
+            data : response,
             success : true,
             message : 'Successfully deleted the city',
             err : {} // shows no error 
