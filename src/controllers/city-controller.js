@@ -90,7 +90,8 @@ const get = async(req, res) => {
 
 const getAll  = async(req, res) => {
     try{
-        const cities = await cityService.getAllCities();
+        console.log(req.params)
+        const cities = await cityService.getAllCities(req.query);
         return res.status(200).json({
             data : cities,
             success : true,
@@ -117,3 +118,25 @@ module.exports = {
     getAll
 }
 
+/* 
+city - controller
+we get params in req body and 
+we just pass to the service layer
+*/
+
+/*
+city-service
+we get filter object but to specify
+filteration only based on the name
+otherwise just pass filter 
+Note : but filteration is done using
+middlewares but this is service so we 
+can add business logic here
+ */
+
+/*
+city-repository
+repository interacts with database
+so we don't add filteration(some
+extra info to the repository layer)
+ */
