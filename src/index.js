@@ -47,8 +47,6 @@ const setupAndStartServer = async () =>{
         //     }
         // });
         // await city.addAirport(newAirport)
-
-        
     })
 }
 
