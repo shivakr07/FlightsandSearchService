@@ -6,8 +6,9 @@ const { PORT } = require('./config/serverConfig')
 const ApiRoutes = require('./routes/index')
 
 // const CityRepository = require('./repository/city-repository');
-const {City, Airport} = require('./models/index')
-// const db = require('./models/index');
+// const {City, Airport} = require('./models/index')
+const {Airplane} = require('./models/index');
+const db = require('./models/index');
 
 const setupAndStartServer = async () =>{
 
@@ -22,6 +23,14 @@ const setupAndStartServer = async () =>{
 
     app.listen(PORT, async() => {
         console.log(`Server started at ${PORT}`);
+        if(process.env.SYNC_DB){
+            db.sequelize.sync({alter:true});
+        }
+        
+        // await Airplane.create({
+        //     modelNumber : 'Bombardier CRJ'
+        // });
+
         // console.log(process.env);
         //creating te city / testing as we are in main index
         // const repo = new CityRepository();
@@ -34,13 +43,13 @@ const setupAndStartServer = async () =>{
         // console.log(airports);
 
         // db.sequelize.sync({alter : true});
-        const city = await City.findOne({
-            where : {
-                id : 8
-            }
-        });
-        const airports = await city.getAirports();
-        console.log(city, airports)
+        // const city = await City.findOne({
+        //     where : {
+        //         id : 8
+        //     }
+        // });
+        // const airports = await city.getAirports();
+        // console.log(city, airports)
         // const newAirport = await Airport.findOne({
         //     where : {
         //         id : 9
